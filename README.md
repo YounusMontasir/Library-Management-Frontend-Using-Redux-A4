@@ -1,69 +1,104 @@
-# React + TypeScript + Vite
+# 📚 LibraTrack - Library Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**LibraTrack** is a full-stack web application for managing a library. Users can add, update, delete, and borrow books. It also provides a summary of borrowed books and a clean UI to browse all available books.
 
-Currently, two official plugins are available:
+## 🔗 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[LibraTrack Live Website](https://library-management-system-using-red.vercel.app/) 
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## ⚙️ Features
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- 🔍 View all books
+- ➕ Add new books
+- ✏️ Update existing books
+- 🗑️ Delete books
+- 📥 Borrow books
+- 📄 Borrow summary
+- 🔐 Basic routing with React Router
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🛠️ Tech Stack
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+| Frontend       | Backend        | Database    | Styling       | State Management        |
+| -------------- | -------------- | ----------- | ------------- | ----------------------- |
+| React + TypeScript | Node.js + Express | MongoDB + Mongoose | Tailwind CSS + shadcn/ui | Redux Toolkit + RTK Query |
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## ✨ Features Summary
+
+### 1. 🚀 Public Routes
+- All pages are accessible without authentication.
+- Focused purely on book and borrowing functionalities.
+
+### 2. 🛠️ Book Management
+- **Book List Table** with columns: Title, Author, Genre, ISBN, Copies, Availability, and Actions.
+- **Actions:**
+  - ✏️ **Edit Book**: Opens form pre-filled with data. Updates instantly on submit.
+    - 🔄 If copies = 0, book is marked as unavailable.
+  - 🗑️ **Delete Book**: Confirmation dialog before deletion.
+  - 📥 **Borrow Book**: Opens form to borrow selected book.
+- **Add New Book**:
+  - Button triggers form with fields: Title, Author, Genre, ISBN, Description, Copies, Available (default: true).
+  - On submission, redirects to book list and updates instantly.
+
+### 3. 📥 Borrow Book
+- Accessed via "Borrow" button from book list.
+- Fields: Quantity (number), Due Date (date).
+- **Business Rules**:
+  - Quantity cannot exceed available copies.
+  - If copies reach 0, book is marked unavailable.
+- On submit:
+  - Send data via API
+  - Show success message
+  - Redirect to Borrow Summary
+
+### 4. 📄 Borrow Summary
+- Aggregated list of all borrowed books.
+- Displays:
+  - Book Title
+  - ISBN
+  - Total Quantity Borrowed
+
+---
+
+## 🖥️ Frontend Installation
+
+This is the frontend for **LibraTrack**, built with React, TypeScript, Redux Toolkit, and Tailwind CSS using Vite.
+
+### 🔗 GitHub Repo
+
+[👉 LibraTrack Frontend on GitHub](https://github.com/YounusMontasir/Library-Management-Frontend-Using-Redux-A4)
+
+---
+
+### 📦 Prerequisites
+
+- Node.js v18+
+- npm (or yarn)
+
+---
+
+### ⚙️ Installation Steps
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/YounusMontasir/Library-Management-Frontend-Using-Redux-A4.git
+
+# 2. Navigate to the project directory
+cd Library-Management-Frontend-Using-Redux-A4
+
+# 3. Install dependencies
+npm install
+# or
+yarn install
+
+# 4. Start the development server
+npm run dev
+# or
+yarn dev
+
+---
